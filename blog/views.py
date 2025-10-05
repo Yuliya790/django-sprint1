@@ -1,7 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
 
-# Список постов
 posts = [
     {
         'id': 0,
@@ -45,22 +44,23 @@ posts = [
     },
 ]
 
+posts_dict = {post['id']: post for post in posts}
+
 
 def index(request):
-    # reversed() для инвертирования порядка
     reversed_posts = list(reversed(posts))
     context = {'posts': reversed_posts}
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
-    # Ищем пост вручную в списке
-    for post in posts:
-        if post['id'] == id:
-            context = {'post': post}
-            return render(request, 'blog/detail.html', context)
-
-    raise Http404("Пост не найден")
+    post = posts_dict.get(id)
+    
+    if post is None:
+        raise Http404(f"Пост с id={id} не найден")
+    
+    context = {'post': post}
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
