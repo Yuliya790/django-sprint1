@@ -1,1 +1,9 @@
-static/
+# Django
+/static/
+/media/
+/html/
+
+# Virtual Environment
+venv/
+__pycache__/
+*.pyc
