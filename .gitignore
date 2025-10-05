@@ -14,3 +14,20 @@ db.sqlite3
 __pycache__/
 *.pyc
 db.sqlite3
+
+__pycache__/
+*.pyc
+db.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+db.sqlite3
+
+# Environment
+venv/
+.env
