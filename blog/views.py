@@ -56,10 +56,10 @@ def index(request):
 
 def post_detail(request, id):
     post = posts_dict.get(id)
-    
+
     if post is None:
         raise Http404(f"Пост с id={id} не найден")
-    
+
     context = {'post': post}
     return render(request, 'blog/detail.html', context)
 
